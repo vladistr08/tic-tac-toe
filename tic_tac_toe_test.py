@@ -27,3 +27,7 @@ def test_moves():
     assert game.board == ["X", "O", "X", "O", "X", "O", "X", "O", "_"]
     game.move(8)
     assert game.board == ["X", "O", "X", "O", "X", "O", "X", "O", "X"]
+
+# TODO
+# winner tests
+# tie tests
