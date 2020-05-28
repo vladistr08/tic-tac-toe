@@ -16,11 +16,18 @@ class Tic_tac_toe:
         return any(boolean_board)
 
     def user_input(self):
-        return int(input("Pe care casuta? :"))
+        intrare =  input("Pe care casuta? :")
+        if len(intrare) != 1:
+            return self.user_input()
+        if ord(intrare) >= ord('0') and ord(intrare) <= ord('8'):
+            return int(intrare)
+        else:
+            return self.user_input()
 
     def game_loop(self):
         while self.game_not_finished():
-            self.move(self.user_input())
+            x = self.user_input()
+            self.move(x)
             self.print_game()
 
     def move(self, location):
