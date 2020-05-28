@@ -10,7 +10,10 @@ class Tic_tac_toe:
     def start_game(self):
         self.print_board()
         self.game_loop()
-        print("the winner is" + self.get_winner())
+        if self.get_winner() == 'TIE':
+            print("It is a TIE!")
+        else:
+            print("The winner is " + self.get_winner() + " congratulations!") 
 
     def __line_win(self, sign):
         for i in range(0, 9, 3):
@@ -19,18 +22,37 @@ class Tic_tac_toe:
         return False
 
     def __col_win(self, sign):
-        pass
+        for i in range(3):
+            if self.board[i] == sign and self.board[i+3] == sign and self.board[i+6] == sign:
+                return True
+        return False
 
     def __diag_win(self, sign):
-        pass
+        if self.board[0] == sign and self.board[4] == sign and self.board[8] == sign:
+            return True
+        if self.board[2] == sign and self.board[4] == sign and self.board[6] == sign:
+            return True
+        return False
 
     def get_winner(self):
         # return 'X' 'O' sau 'Tie' daca e sfarsit de joc
         # return string gol daca nu e sfarsit de joc
-       ''' boolean_board = list(map(lambda x: x == '_', self.board))
-        return any(boolean_board)'''
-
-        
+        if self.__line_win('X') == True:
+            return 'X'
+        if self.__line_win('O') == True:
+            return 'O'
+        if self.__col_win('X') == True:
+            return 'X'
+        if self.__col_win('O') == True:
+            return 'O'
+        if self.__diag_win('X') == True:
+            return 'X'
+        if self.__diag_win('O') == True:
+            return 'O'
+        boolean_board = list(map(lambda x: x == '_', self.board))
+        if not any(boolean_board):
+            return 'TIE'
+        return ""
 
     def game_not_finished(self):
         if self.get_winner() == "":
