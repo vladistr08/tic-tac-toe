@@ -9,14 +9,22 @@ class Tic_tac_toe:
         self.player_curent = player_curent
         self.board = ['_' for i in range(9)]
 
-    # Preia miscarea unui jucator si transforma board-ul
+    def start_game(self):
+        self.print_board()
+        self.game_loop()
+        print("the winner is" + self.get_winner())
+
+    def get_winner(self):
+        pass
 
     def game_not_finished(self):
-        boolean_board = list(map(lambda x: x == '_', self.board))
-        return any(boolean_board)
-
+        if self.get_winner() == "":
+            return True
+        else:
+            return False
+            
     def user_input(self):
-        intrare =  input("Pe care casuta? :")
+        intrare =  input("Pe care casuta? (0-8) :")
         if len(intrare) != 1:
             return self.user_input()
         if ord(intrare) >= ord('0') and ord(intrare) <= ord('8'):
@@ -52,4 +60,4 @@ class Tic_tac_toe:
         self.print_board()
 
 game = Tic_tac_toe()
-game.game_loop()
+game.start_game()
