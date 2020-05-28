@@ -1,13 +1,19 @@
+#the tic-tac-toe class
 class Tic_tac_toe:
+    # useful game atributes
     player_curent = ""
     board = []
     message = ""
 
+    #the construnctor of the class
     def __init__(self, player_curent = "X"):
         self.player_curent = player_curent
+        # fill the board with '_' characther
         self.board = ['_' for i in range(9)]
 
+    #the main function where the game starts
     def start_game(self):
+        print("This is the Board, the position where you put X or O is from 0-8 from left to right and up to down!")
         self.print_board()
         self.game_loop()
         if self.get_winner() == 'TIE':
@@ -35,8 +41,8 @@ class Tic_tac_toe:
         return False
 
     def get_winner(self):
-        # return 'X' 'O' sau 'Tie' daca e sfarsit de joc
-        # return string gol daca nu e sfarsit de joc
+        # return 'X' 'O' or 'Tie' if the game is at end
+        # return empty string if the game is running
         if self.__line_win('X') == True:
             return 'X'
         if self.__line_win('O') == True:
@@ -69,12 +75,14 @@ class Tic_tac_toe:
         else:
             return self.user_input()
 
+    # the main function where the game runs
     def game_loop(self):
         while self.game_not_finished():
             x = self.user_input()
             self.move(x)
             self.print_game()
 
+    # puts X or O on the board and change the next sign
     def move(self, location):
         if self.board[location] != '_':
             self.message = "Invalid Move"
