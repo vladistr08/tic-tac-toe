@@ -1,3 +1,5 @@
+from terminaltables import SingleTable
+from fabulous.color import bold, bg256, fg256
 #the tic-tac-toe class
 class Tic_tac_toe:
     # useful game atributes
@@ -8,8 +10,8 @@ class Tic_tac_toe:
     #the construnctor of the class
     def __init__(self, player_curent = "X"):
         self.player_curent = player_curent
-        # fill the board with '_' characther
-        self.board = ['_' for i in range(9)]
+        # fill the board with ' ' characther
+        self.board = [' ' for i in range(9)]
 
     #the main function where the game starts
     def start_game(self):
@@ -55,7 +57,7 @@ class Tic_tac_toe:
             return 'X'
         if self.__diag_win('O') == True:
             return 'O'
-        boolean_board = list(map(lambda x: x == '_', self.board))
+        boolean_board = list(map(lambda x: x == ' ', self.board))
         if not any(boolean_board):
             return 'TIE'
         return ""
@@ -67,7 +69,7 @@ class Tic_tac_toe:
             return False
             
     def user_input(self):
-        intrare =  input("Pe care casuta? (0-8) :")
+        intrare =  input(bold("On wich position (0-8) :"))
         if len(intrare) != 1:
             return self.user_input()
         if ord(intrare) >= ord('0') and ord(intrare) <= ord('8'):
@@ -84,7 +86,7 @@ class Tic_tac_toe:
 
     # puts X or O on the board and change the next sign
     def move(self, location):
-        if self.board[location] != '_':
+        if self.board[location] != ' ':
             self.message = "Invalid Move"
         else:
             self.board[location] = self.player_curent
@@ -94,13 +96,18 @@ class Tic_tac_toe:
                 self.player_curent = 'X' 
 
     def print_board(self):
-        for i in range(0, 9, 3):
-            print(self.board[i] + ' | ' + self.board[i+1] + ' | ' + self.board[i+2])
+        data = [[self.board[0], self.board[1], self.board[2]],
+               [self.board[3], self.board[4], self.board[5]],
+               [self.board[6], self.board[7], self.board[8]]
+         ]
+        table = SingleTable(data)
+        table.inner_row_border = True
+        print(table.table)
         print()
 
     def print_game(self):
-        print("Current Player: " + self.player_curent)
-        print(self.message)
+        print(bg256("blue","Current Player: " + self.player_curent))
+        print(bg256("red", self.message))
         self.message = ""
         self.print_board()
 
