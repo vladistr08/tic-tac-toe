@@ -5,6 +5,8 @@ from fabulous.color import blue
 # the tic-tac-toe class
 
 
+
+# the tic-tac-toe class
 class Tic_tac_toe:
     # useful game atributes
     player_curent = ""
@@ -29,13 +31,13 @@ class Tic_tac_toe:
 
     def __line_win(self, sign):
         for i in range(0, 9, 3):
-            if self.board[i] == sign and self.board[i+1] == sign and self.board[i+2] == sign:
+            if self.board[i] == sign and self.board[i + 1] == sign and self.board[i + 2] == sign:
                 return True
         return False
 
     def __col_win(self, sign):
         for i in range(3):
-            if self.board[i] == sign and self.board[i+3] == sign and self.board[i+6] == sign:
+            if self.board[i] == sign and self.board[i + 3] == sign and self.board[i + 6] == sign:
                 return True
         return False
 
