@@ -102,11 +102,6 @@ class Tic_tac_toe:
                 self.player_curent = 'X'
 
     def print_board(self):
-        data = [[self.board[0], self.board[1], self.board[2]],
-                [self.board[3], self.board[4], self.board[5]],
-                [self.board[6], self.board[7], self.board[8]]
-                ]
-
         display_data = [cell + "\n" + blue(index) for index,
                         cell in enumerate(self.board)]
 
