@@ -1,5 +1,9 @@
 from terminaltables import SingleTable
 from fabulous.color import bold, bg256, fg256
+from fabulous.color import blue
+# import numpy as np
+# the tic-tac-toe class
+
 
 
 # the tic-tac-toe class
@@ -102,6 +106,11 @@ class Tic_tac_toe:
                 [self.board[3], self.board[4], self.board[5]],
                 [self.board[6], self.board[7], self.board[8]]
                 ]
+
+        display_data = [cell + "\n" + blue(index) for index,
+                        cell in enumerate(self.board)]
+
+        data = [display_data[0:3], display_data[3:6], display_data[6:]]
         table = SingleTable(data)
         table.inner_row_border = True
         print(table.table)
