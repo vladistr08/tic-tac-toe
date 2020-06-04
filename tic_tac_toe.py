@@ -74,7 +74,7 @@ class Tic_tac_toe:
         intrare = input(bold("On wich position (0-8) :"))
         if len(intrare) != 1:
             return self.user_input()
-        if ord(intrare) >= ord('0') and ord(intrare) <= ord('8'):
+        if ord('0') <= ord(intrare) <= ord('8'):
             return int(intrare)
         else:
             return self.user_input()
