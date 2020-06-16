@@ -1,16 +1,37 @@
 #:kivy 1.0
 
-<Widget>:
-    font_size: '50sp'
+#<Widget>:
+#    font_size: '90sp'
+
+<Button>:
+    font_size: '100sp'
 
 BoxLayout:
-    orientation: 'horizontal'
-    padding: 10
-    spacing: 5
-    Button:
-        text: 'Hello nutzi!'
-        font_size: '60sp'
-    Button:
-        text: 'aye'
-    Button:
-        text: 'potarnichie'
+    orientation: 'vertical'
+    Label:
+        text: "Ana are pere!"
+        font_size: '30sp'
+        size_hint_y: None
+
+    GridLayout:
+        cols: 3
+        Button:
+            text: "X"
+        Button:
+            text: "AB"
+        Button:
+            text: "X"
+
+        Button:
+            text: "O"
+        Button:
+            text: " "
+        Button:
+            text: "X"
+
+        Button:
+            text: " "
+        Button:
+            text: " "
+        Button:
+            text: " "
